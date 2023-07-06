@@ -1,6 +1,5 @@
 
 
-export * from './DCPage'
-export * from './MarvelPage'
-export * from './Hero'
-export * from './SearchPage'
+export * from './MotoGP'
+export * from './Moto2'
+export * from './Rider'

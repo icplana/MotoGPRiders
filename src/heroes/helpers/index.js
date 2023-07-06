@@ -1,5 +1,5 @@
  
  
- export * from './getHerosByPublisher'
- export * from './getHeroById'
- export * from './getHerosByName'
+ export * from './getRidersByLeague'
+ export * from './getRiderById'
+ export * from './getRiderByName'
