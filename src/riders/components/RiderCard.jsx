@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
 export const RiderCard = ({ rider }) => {
-
   
-    const { id, name, league, imgURL, country } = rider
+  const { id, name, league, imgURL, country } = rider
+  
     return (
       <div className="cardBox card p-2 mb-2">
         <img src={ imgURL } className="animate__animated animate__fadeIn imgCard mx-auto" alt={ name } />
@@ -13,7 +13,7 @@ export const RiderCard = ({ rider }) => {
         
               
         <Link
-         to={`/rider/${ id }`}
+         to={`motogp/${ id }`}
          className="btn btn-secondary mt-auto"
         >Más información...</Link>
       </div>

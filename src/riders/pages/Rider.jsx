@@ -2,11 +2,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom"
 import { getRiderById } from "../helpers"
 import { useMemo } from "react"
 
-export const Rider = () => {
-
-  const { riderId } = useParams() 
- 
-  const actualRider = useMemo( () => getRiderById( riderId ), [ riderId ] )
+export const Rider = ({ rider }) => {
 
   const navigate = useNavigate()
 
@@ -15,8 +11,8 @@ export const Rider = () => {
   }
 
   
-  if ( !actualRider ){
-    return <Navigate to="/dc" />
+  if ( !rider ){
+    return <Navigate to="/moto2" />
   }
 
 
@@ -24,14 +20,14 @@ export const Rider = () => {
     <div className="row mt-5">
       <div className="col-4">
         <img 
-          src= { actualRider.imgURL }
-          alt={ actualRider.name } 
+          src= { rider.imgURL }
+          alt={ rider.name } 
           className="img-thumbnail animate__animated animate__fadeInLeft"
         />
       </div>
 
       <div className="col-8">
-        <h3>{ actualRider.name }</h3>       
+        <h3>{ rider.name }</h3>       
 
         <button
           className="btn btn-outline-primary"
