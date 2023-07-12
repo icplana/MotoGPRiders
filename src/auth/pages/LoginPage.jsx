@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm } from '../../hooks/useForm'
+import { AuthContext } from '../context'
+import { useNavigate } from 'react-router-dom'
 
 export const LoginPage = () => {
+
+  const { login } = useContext( AuthContext )
+
+  const navigate = useNavigate()
+
+  const onLogin = () => {
+
+    login( 'Juan' )
+
+    navigate('/', { replace: true })
+  }
 
   const { onInputChange, email, password } = useForm({ email: '', password: '' })
   return (
@@ -33,7 +46,7 @@ export const LoginPage = () => {
           />
         </div>
 
-        <button className='btn btn-secondary'>
+        <button className='btn btn-secondary' onClick={ onLogin }>
           Login
         </button>
 
