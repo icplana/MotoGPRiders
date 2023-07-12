@@ -117,7 +117,7 @@ export const RegisterPage = () => {
         <div className="alert alert-success d-none mt-2" role="alert" ref={succesAlert}>
             Registro Correcto
 
-            <Link to="/motogp" className="ms-3 btn btn-success" onClick={ () => login( nombre )}>Entrar</Link>
+            <Link to="/motogp" className="ms-3 btn btn-success" onClick={ () => login( email )}>Entrar</Link>
         </div>
 
 

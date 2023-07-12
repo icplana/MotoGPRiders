@@ -1,19 +1,33 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import { useForm } from '../../hooks/useForm'
 import { AuthContext } from '../context'
 import { Link, useNavigate } from 'react-router-dom'
+import { signInEmail } from '../../Firebase/firebase'
 
 export const LoginPage = () => {
 
   const { login } = useContext( AuthContext )
 
-  const navigate = useNavigate()
+  const wrongAlert = useRef()
 
-  const onLogin = () => {
 
-    login( 'Juan' )
+  const onLogin = async (e) => {
+    e.preventDefault()
+    const user = await signInEmail( email, password )
 
-    navigate('/', { replace: true })
+    if ( user.auth ) {
+      
+      login( user.email )
+      return
+    }
+
+    wrongAlert.current.classList.remove('d-none')
+
+    setTimeout(() => {
+      wrongAlert.current.classList.add('d-none')
+    }, 5000);
+
+    
   }
 
   const { onInputChange, email, password } = useForm({ email: '', password: '' })
@@ -49,6 +63,10 @@ export const LoginPage = () => {
         <button className='btn btn-secondary' onClick={ onLogin }>
           Login
         </button>
+
+        <div className="alert alert-danger d-none" role="alert" ref={ wrongAlert }>
+            Usuario y/o contraseña incorrecto/s.
+          </div>
 
 
       </form>

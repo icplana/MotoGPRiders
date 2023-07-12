@@ -49,7 +49,7 @@ export const Navbar = () => {
             <div>
 
                 <span className='text-white me-4'>
-                    { state.user.name } 
+                    { state.user.email } 
                 </span>
                 <button className='btn btn-secondary' onClick={ logout }>
                     Logout
