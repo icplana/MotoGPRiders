@@ -2,14 +2,32 @@ import React, { useContext, useRef } from 'react'
 import { useForm } from '../../hooks/useForm'
 import { AuthContext } from '../context'
 import { Link, useNavigate } from 'react-router-dom'
-import { signInEmail } from '../../Firebase/firebase'
+import { signInEmail, signInWithGoogle } from '../../Firebase/firebase'
 
 export const LoginPage = () => {
 
   const { login } = useContext( AuthContext )
 
   const wrongAlert = useRef()
+  const wrong2Alert = useRef()
 
+  const onLoginGoogle = async (e) => {
+    e.preventDefault()
+
+    const user = await signInWithGoogle()
+    
+    if ( user.auth ) {
+      
+      login( user.email )
+      return
+    }
+
+    wrong2Alert.current.classList.remove('d-none')
+
+    setTimeout(() => {
+      wrong2Alert.current.classList.add('d-none')
+    }, 5000);
+  }
 
   const onLogin = async (e) => {
     e.preventDefault()
@@ -33,7 +51,7 @@ export const LoginPage = () => {
   const { onInputChange, email, password } = useForm({ email: '', password: '' })
   return (
     <div className='bg-light py-5 min-vh-100'>
-      <form className='mx-5 bg-primary text-white rounded-3 p-4'>
+      <form className='mx-5 bg-primary text-white rounded-3 p-4' onSubmit={ onLogin }>
       <h3 className='mb-4'>Login</h3>
       
         <div className=' mb-3'>          
@@ -60,13 +78,21 @@ export const LoginPage = () => {
           />
         </div>
 
-        <button className='btn btn-secondary' onClick={ onLogin }>
+        <button className='btn btn-secondary' onClick={ onLogin } >
           Login
         </button>
 
-        <div className="alert alert-danger d-none" role="alert" ref={ wrongAlert }>
+        <button className='btn btn-secondary ms-5' onClick={ onLoginGoogle }>
+          Login with google
+        </button>
+
+        <div className="alert alert-danger d-none mt-3" role="alert" ref={ wrongAlert }>
             Usuario y/o contraseña incorrecto/s.
-          </div>
+        </div>
+
+        <div className="alert alert-danger d-none mt-3" role="alert" ref={ wrong2Alert }>
+            Algo salio mal.
+        </div>
 
 
       </form>
