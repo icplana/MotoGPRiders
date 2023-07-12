@@ -3,6 +3,7 @@ import { PublicRoutes } from "./PublicRoutes"
 import { LoginPage } from "../auth/pages/LoginPage"
 import { PrivateRoutes } from "./PrivateRoutes"
 import { RiderRoutes } from "../riders/routes/RiderRoutes"
+import { RegisterPage } from "../auth/pages/RegisterPage"
 
 
 export const AppRouter = () => {
@@ -13,6 +14,14 @@ export const AppRouter = () => {
     {
       <PublicRoutes>
         <LoginPage />
+      </PublicRoutes>
+    }
+    />
+
+    <Route path="/register" element=
+    {
+      <PublicRoutes>
+        <RegisterPage />
       </PublicRoutes>
     }
     />

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useForm } from '../../hooks/useForm'
 import { AuthContext } from '../context'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const LoginPage = () => {
 
@@ -50,7 +50,9 @@ export const LoginPage = () => {
           Login
         </button>
 
+
       </form>
+        <Link to="/register" className='ms-5 btn btn-primary mt-4'>Crear una cuenta!</Link>
     </div>
   )
 }
