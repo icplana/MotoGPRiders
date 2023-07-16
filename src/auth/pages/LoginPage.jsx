@@ -48,6 +48,12 @@ export const LoginPage = () => {
     
   }
 
+  const onLoginGuest = async (e) => {
+    e.preventDefault()
+   login( 'GUEST')
+    
+  }
+
   const { onInputChange, email, password } = useForm({ email: '', password: '' })
   return (
     <div className='bg-light py-5 min-vh-100'>
@@ -84,6 +90,10 @@ export const LoginPage = () => {
 
         <button className='btn btn-secondary ms-5' onClick={ onLoginGoogle }>
           Login with google
+        </button>
+
+        <button className='btn btn-secondary ms-5' onClick={ onLoginGuest }>
+          Enter as Guest
         </button>
 
         <div className="alert alert-danger d-none mt-3" role="alert" ref={ wrongAlert }>

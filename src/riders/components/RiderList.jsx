@@ -6,7 +6,7 @@ import { RiderCard } from "./RiderCard"
 
 
 
-export const RiderList = ({ league }) => {
+export const RiderList = ({ league,  }) => {
 
     const riders = useMemo( () => getRidersByLeague( league ), [ league ] )
 

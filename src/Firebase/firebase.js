@@ -95,17 +95,3 @@ export const signInWithGoogle = async () => {
 }
 
 
-export const signInGuest = async () => {
-  const user = signInAnonymously(auth)
-  .then(() => {
-    // Signed in..
-  })
-  .catch((error) => {
-    return error
-    // ...
-  });
-
-  const resp = user.then()
-
-  return resp
-}

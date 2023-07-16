@@ -41,6 +41,16 @@ export const Navbar = () => {
                     >
                         Moto2
                     </NavLink>
+                    {
+                     state.user.email !== 'GUEST' &&
+                     state.user.email !== undefined &&
+                    <NavLink 
+                        className={ ({isActive}) => `nav-item nav-link ${ isActive ?'active': ''}`} 
+                        to="/favoritos"
+                    >
+                        Favoritos
+                    </NavLink>
+                    }
 
                    
                 </div>
