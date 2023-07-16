@@ -26,10 +26,19 @@ export const AuthProvider = ({ children }) => {
     dispatch( action )
   }
 
+  const updateFavList = async ( favList ) => {
+    const action = {
+      type: types.updateFavList,
+      payload: favList      
+    }
+
+    dispatch( action )
+  }
+
 
 
   return (
-    <AuthContext.Provider value={ { state, login, logout } }>
+    <AuthContext.Provider value={ { state, login, logout, updateFavList } }>
         { children }
     </AuthContext.Provider>
   )

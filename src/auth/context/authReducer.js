@@ -27,7 +27,18 @@ switch ( action .type ){
                 logged: false
             }
 
-
+        
+           
+        case types.updateFavList:
+            
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    favList: action.payload
+                }
+            }
+        
         default:
             return state
     }

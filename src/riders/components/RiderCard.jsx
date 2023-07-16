@@ -1,20 +1,27 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../auth";
-import { addFavoriteDB, removeFavoriteDB } from "../../Firebase/firebase";
+import { updateFavoriteDB } from "../../Firebase/firebase";
 
-export const RiderCard = ({ rider, favoritesIds = [] }) => {
+export const RiderCard = ({ rider }) => {
 
+  const { state, updateFavList } = useContext( AuthContext )
+
+  const favoritesIds = state.user.favList
+  
   const addFavs = ( id ) => {
-    const riderList = favoritesIds.push( id )
-    addFavoriteDB({ userId: state.user.id, riderList })
+    favoritesIds.push( id )
+    console.log(favoritesIds)
+    updateFavList( favoritesIds )
+    updateFavoriteDB({ userId: state.user.id, riderList: favoritesIds })
   }
   const removeFavs = ( id ) => {
     const riderList = favoritesIds.filter( fav => fav !== id )
-    removeFavoriteDB({ userId: state.user.id, riderList })
+    updateFavList( riderList )
+    updateFavoriteDB({ userId: state.user.id, riderList })
   }
   
-  const { state } = useContext( AuthContext )
+  
   
   const { id, name, league, imgURL, country } = rider
   

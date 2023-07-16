@@ -105,6 +105,7 @@ export const getFavoritesDB = async ( userId ) => {
 
   
   const resp = await getDoc( doc( FirebaseDB, `${ userId }/favoriteRiders` ))
+  console.log(resp)
   const data = resp._document.data.value.mapValue.fields.favoriteRidersId.arrayValue.values
   const favorites = data.map( each => each.stringValue )
   console.log(favorites) 
@@ -116,17 +117,15 @@ export const getFavoritesDB = async ( userId ) => {
 
 
 
-export const addFavoriteDB = async ({ userId, riderList }) => {
+export const updateFavoriteDB = async ({ userId, riderList }) => {
 
-  const newDoc = doc( collection( FirebaseDB, `${ userId }` ))
+  const newDoc = doc(FirebaseDB, `${ userId }` , 'favoriteRiders' )
+  
+  console.log(riderList)
 
-  await setDoc( newDoc, riderList )
+  await setDoc( newDoc, {
+     favoriteRidersId: riderList 
+  })
 }
 
-export const removeFavoriteDB = async ({ userId, riderList }) => {
-
-  const newDoc = doc( collection( FirebaseDB, `${ userId }` ))
-
-  await updateDoc( newDoc, { favoriteRiders: riderList } )
-}
 
