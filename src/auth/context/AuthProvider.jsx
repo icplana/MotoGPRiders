@@ -4,10 +4,15 @@ import { AuthContext } from "./AuthContext"
 import { types } from "../types/types"
 
 
+const initialState = JSON.parse( sessionStorage.getItem('state')) || {
+  logged: false,
+  user: null
+}
+
 
 export const AuthProvider = ({ children }) => {
 
-  const [ state, dispatch ] = useReducer( authReducer, { logged: false } )
+  const [ state, dispatch ] = useReducer( authReducer, initialState )
 
   const login = async ( email =  '', id, favList ) => {
     const action = {

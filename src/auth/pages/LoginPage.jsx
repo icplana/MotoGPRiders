@@ -1,12 +1,13 @@
 import React, { useContext, useRef } from 'react'
 import { useForm } from '../../hooks/useForm'
 import { AuthContext } from '../context'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { getFavoritesDB, signInEmail, signInWithGoogle } from '../../Firebase/firebase'
 
 export const LoginPage = () => {
 
   const { login } = useContext( AuthContext )
+
 
   const wrongAlert = useRef()
   const wrong2Alert = useRef()

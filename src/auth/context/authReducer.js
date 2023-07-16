@@ -1,11 +1,11 @@
 import { types } from "../types/types";
 
-
-const initialState = {
+const initialState = JSON.parse( sessionStorage.getItem('state')) || {
     logged: false,
     user: null
 
 }
+
 
 export const authReducer = ( state = initialState, action ) => {
 
@@ -13,6 +13,12 @@ export const authReducer = ( state = initialState, action ) => {
 switch ( action .type ){
         
         case types.login:
+
+            sessionStorage.setItem( 'state', JSON.stringify({
+                ...state,
+                logged: true,
+                user: action.payload
+            }))
 
             return {
                 ...state,
@@ -22,6 +28,9 @@ switch ( action .type ){
 
 
         case types.logout:
+            
+
+            sessionStorage.removeItem( 'state' )
 
             return {
                 logged: false
@@ -30,7 +39,15 @@ switch ( action .type ){
         
            
         case types.updateFavList:
-            
+
+            sessionStorage.setItem( 'state', JSON.stringify({
+                ...state,
+                logged: true,
+                user: {
+                    ...state.user,
+                    favList: action.payload
+                }
+            }))
             return {
                 ...state,
                 user: {

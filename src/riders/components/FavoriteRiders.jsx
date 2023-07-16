@@ -17,8 +17,9 @@ export const FavoriteRiders = () => {
   return (
     <div className="d-flex flex-wrap justify-content-around">
        {
-        
-        newRiders.map( rider => <RiderCard key={ rider.id } rider ={ rider } />)
+        ( newRiders.length === 0 )
+        ?<h3>Aun no tienes ningún piloto</h3>
+        : newRiders.map( rider => <RiderCard key={ rider.id } rider ={ rider } />)
        } 
     </div>
   )

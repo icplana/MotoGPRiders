@@ -13,11 +13,13 @@ export const RiderCard = ({ rider }) => {
     favoritesIds.push( id )
     console.log(favoritesIds)
     updateFavList( favoritesIds )
+    sessionStorage.setItem( 'state', JSON.stringify( state ))
     updateFavoriteDB({ userId: state.user.id, riderList: favoritesIds })
   }
   const removeFavs = ( id ) => {
     const riderList = favoritesIds.filter( fav => fav !== id )
     updateFavList( riderList )
+    sessionStorage.setItem( 'state', JSON.stringify( state ))
     updateFavoriteDB({ userId: state.user.id, riderList })
   }
   
