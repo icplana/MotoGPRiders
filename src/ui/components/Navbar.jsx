@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../auth';
+import { getFavoritesDB } from '../../Firebase/firebase';
 
 
 
@@ -10,7 +11,10 @@ export const Navbar = () => {
 
     const { state, logout } = useContext( AuthContext )
 
-
+    const clickPrint = () => {
+        console.log( state )
+        getFavoritesDB( state.user.id )
+    }
 
 
     
@@ -52,6 +56,10 @@ export const Navbar = () => {
                     </NavLink>
                     }
 
+
+                    <button
+                        onClick={ clickPrint }
+                    >print state</button>
                    
                 </div>
             </div>

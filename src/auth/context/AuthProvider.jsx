@@ -9,12 +9,13 @@ export const AuthProvider = ({ children }) => {
 
   const [ state, dispatch ] = useReducer( authReducer, { logged: false } )
 
-  const login = async ( email =  '' ) => {
+  const login = async ( email =  '', id, favList ) => {
     const action = {
       type: types.login,
       payload: { 
-        id: 'ABC',
-        email 
+        id,
+        email,
+        favList 
       },
     }
     dispatch( action )

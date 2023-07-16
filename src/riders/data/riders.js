@@ -1,3 +1,5 @@
+
+
 export const riders = [
     {
         'id': 'FBagnaia',
@@ -175,3 +177,10 @@ export const riders = [
         'country': 'Germany'
     },
 ]
+
+
+
+
+export const testIds = [ 'FBagnaia', 'JZarco', 'AEspargaro', 'PEspargaro', 'MMarquez']
+
+

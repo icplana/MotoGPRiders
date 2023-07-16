@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
+import { collection, doc, getDoc, getDocs, getFirestore, setDoc, updateDoc } from "firebase/firestore"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,6 +19,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+
+const FirebaseDB = getFirestore( app )
 
 export const registerEmail = async ( email, password ) => {
 
@@ -94,4 +97,36 @@ export const signInWithGoogle = async () => {
   return resp
 }
 
+
+
+
+
+export const getFavoritesDB = async ( userId ) => {
+
+  
+  const resp = await getDoc( doc( FirebaseDB, `${ userId }/favoriteRiders` ))
+  const data = resp._document.data.value.mapValue.fields.favoriteRidersId.arrayValue.values
+  const favorites = data.map( each => each.stringValue )
+  console.log(favorites) 
+  return favorites
+  
+}
+
+
+
+
+
+export const addFavoriteDB = async ({ userId, riderList }) => {
+
+  const newDoc = doc( collection( FirebaseDB, `${ userId }` ))
+
+  await setDoc( newDoc, riderList )
+}
+
+export const removeFavoriteDB = async ({ userId, riderList }) => {
+
+  const newDoc = doc( collection( FirebaseDB, `${ userId }` ))
+
+  await updateDoc( newDoc, { favoriteRiders: riderList } )
+}
 
