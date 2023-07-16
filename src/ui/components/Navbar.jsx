@@ -11,10 +11,10 @@ export const Navbar = () => {
 
     const { state, logout } = useContext( AuthContext )
 
-    const clickPrint = () => {
-        console.log( state )
-        getFavoritesDB( state.user.id )
-    }
+    // const clickPrint = () => {
+    //     console.log( state )
+    //     getFavoritesDB( state.user.id )
+    // }
 
 
     
@@ -57,9 +57,11 @@ export const Navbar = () => {
                     }
 
 
-                    <button
+                    {/* <button
                         onClick={ clickPrint }
-                    >print state</button>
+                    >
+                        print state
+                    </button> */}
                    
                 </div>
             </div>
