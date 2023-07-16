@@ -8,7 +8,7 @@ export const Moto2 = () => {
     <>
       <h1>Moto 2</h1>
       <hr />
-
+      <h3>Site under construction...</h3>
       <RiderList league={ 'Moto2'} />
     </>
   )

@@ -90,11 +90,11 @@ export const LoginPage = () => {
         </button>
 
         <button className='btn btn-secondary ms-5' onClick={ onLoginGoogle }>
-          Login with google
+          Login con google
         </button>
 
         <button className='btn btn-secondary ms-5' onClick={ onLoginGuest }>
-          Enter as Guest
+          Entrar como invitado
         </button>
 
         <div className="alert alert-danger d-none mt-3" role="alert" ref={ wrongAlert }>

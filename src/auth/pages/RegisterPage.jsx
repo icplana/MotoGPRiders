@@ -60,7 +60,7 @@ export const RegisterPage = () => {
   return (
     <div className='bg-light py-5 min-vh-100'>
     <form className='mx-5 bg-primary text-white rounded-3 p-4' onSubmit={onRegister}>
-      <h3 className='mb-4'>Register</h3>
+      <h3 className='mb-4'>Registro de cuenta</h3>
       
         <div className=' mb-3'>          
           <label htmlFor="nombre" className='form-label'>Nombre</label>
@@ -111,7 +111,7 @@ export const RegisterPage = () => {
         </div>
 
         <button className='btn btn-secondary' >
-          Register
+          Registrarse
         </button>
 
         <div className="alert alert-success d-none mt-2" role="alert" ref={succesAlert}>
