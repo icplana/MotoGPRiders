@@ -106,10 +106,13 @@ export const getFavoritesDB = async ( userId ) => {
   
   const resp = await getDoc( doc( FirebaseDB, `${ userId }/favoriteRiders` ))
   console.log(resp)
-  const data = resp._document.data.value.mapValue.fields.favoriteRidersId.arrayValue.values
-  const favorites = data.map( each => each.stringValue )
-  console.log(favorites) 
-  return favorites
+  if ( resp._document !== null ){
+    const data = resp._document.data.value.mapValue.fields.favoriteRidersId.arrayValue.values
+    const favorites = data.map( each => each.stringValue )
+    return favorites
+  }
+
+  return []
   
 }
 
