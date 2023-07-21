@@ -58,7 +58,7 @@ export const LoginPage = () => {
   const { onInputChange, email, password } = useForm({ email: '', password: '' })
   return (
     <div className='bg-light py-5 min-vh-100'>
-      <form className='mx-5 bg-primary text-white rounded-3 p-4' onSubmit={ onLogin }>
+      <form className=' mx-1 mx-sm-5 bg-primary text-white rounded-3 p-4' onSubmit={ onLogin }>
       <h3 className='mb-4'>Login</h3>
       
         <div className=' mb-3'>          
@@ -85,15 +85,15 @@ export const LoginPage = () => {
           />
         </div>
 
-        <button className='btn btn-secondary' onClick={ onLogin } >
+        <button className='d-block d-md-inline btn btn-secondary me-5 mb-3' onClick={ onLogin } >
           Login
         </button>
 
-        <button className='btn btn-secondary ms-5' onClick={ onLoginGoogle }>
+        <button className='d-block d-md-inline btn btn-secondary me-5 mb-3' onClick={ onLoginGoogle }>
           Login con google
         </button>
 
-        <button className='btn btn-secondary ms-5' onClick={ onLoginGuest }>
+        <button className='d-block d-md-inline btn btn-secondary mb-3 ' onClick={ onLoginGuest }>
           Entrar como invitado
         </button>
 
